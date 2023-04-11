@@ -99,24 +99,6 @@ CREATE TABLE pizza (
   UNIQUE INDEX name_pizza_UNIQUE (name_pizza) VISIBLE
 );
 
-CREATE TABLE recipe (
-  id_pizza INT NOT NULL,
-  id_ingredient INT NOT NULL,
-  ingredient_quantity INT NOT NULL,
-  PRIMARY KEY (id_pizza, id_ingredient),
-  INDEX recipe_id_ingredient_idx (id_ingredient ASC) VISIBLE,
-  CONSTRAINT recipe_id_pizza
-    FOREIGN KEY (id_pizza)
-    REFERENCES pizza (id_pizza)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  CONSTRAINT recipe_id_ingredient
-    FOREIGN KEY (id_ingredient)
-    REFERENCES ingredient (id_ingredient)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE
-);
-
 CREATE TABLE command (
   id_command INT NOT NULL AUTO_INCREMENT,
   create_time TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
